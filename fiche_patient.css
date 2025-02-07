@@ -1,0 +1,79 @@
+/* Variables des couleurs */
+:root {
+    --color-bg: #f7f9fc; /* Fond principal */
+    --color-card-bg: #ffffff; /* Fond des cartes */
+    --color-text: #4a5568; /* Texte principal */
+    --color-border: #cbd5e0; /* Bordures */
+    --color-accent: #2d9cdb; /* Couleur principale */
+    --color-accent-hover: #1c7cbf; /* Couleur principale au survol */
+}
+
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Conteneur principal */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Carte pour les informations du patient */
+.card {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: var(--color-text);
+}
+
+.card p strong {
+    color: var(--color-accent);
+}
+
+/* Bouton de retour */
+.return-btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    text-align: center;
+    background-color: var(--color-accent);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.return-btn:hover {
+    background-color: var(--color-accent-hover);
+}

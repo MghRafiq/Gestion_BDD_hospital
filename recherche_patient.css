@@ -1,0 +1,138 @@
+/* Variables des couleurs */
+:root {
+    --color-bg: #f7f9fc; /* Fond principal */
+    --color-bg-secondary: #e8f1f8; /* Fond secondaire */
+    --color-text: #4a5568; /* Texte principal */
+    --color-border: #cbd5e0; /* Bordures */
+    --color-accent: #2d9cdb; /* Couleur principale */
+    --color-accent-hover: #1c7cbf; /* Couleur principale au survol */
+}
+
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Conteneur principal */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: var(--color-bg-secondary);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre principal */
+header h1 {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+form input[type="text"],
+form input[type="date"],
+form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    background-color: #fff;
+    transition: border-color 0.3s ease-in-out;
+}
+
+form input:focus,
+form select:focus {
+    border-color: var(--color-accent);
+    outline: none;
+    box-shadow: 0 0 5px rgba(45, 156, 219, 0.3);
+}
+
+form button {
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: var(--color-accent);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+form button:hover {
+    background-color: var(--color-accent-hover);
+}
+
+/* Bouton de réinitialisation */
+.reset-btn {
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff; /* Couleur du texte en blanc */
+    background-color: #e53e3e; /* Couleur rouge */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+/* Effet au survol */
+.reset-btn:hover {
+    background-color: #c53030; /* Rouge plus sombre au survol */
+    transform: translateY(-2px); /* Légère élévation */
+}
+
+
+/* Résultats */
+.results {
+    margin-top: 20px;
+}
+
+.results p {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+
+.results p a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.results p a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+}
