@@ -1,0 +1,121 @@
+/* style.css */
+:root {
+    --color-bg: #f7f9fc;
+    --color-card-bg: #ffffff;
+    --color-text: #4a5568;
+    --color-border: #cbd5e0;
+    --color-accent: #2d9cdb;
+    --color-accent-hover: #1c7cbf;
+    --color-error: #e53e3e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background-color: var(--color-card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: var(--color-accent);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--color-accent-hover);
+}
+
+.btn.logout {
+    background-color: var(--color-error);
+    margin-bottom: 0;
+}
+
+.btn.logout:hover {
+    background-color: #c53030;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: var(--color-accent);
+    outline: none;
+    box-shadow: 0 0 5px rgba(45, 156, 219, 0.3);
+}
+
+button {
+    background-color: var(--color-accent);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--color-accent-hover);
+}
+
+.error {
+    color: var(--color-error);
+    margin-bottom: 15px;
+}

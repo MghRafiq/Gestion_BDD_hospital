@@ -96,6 +96,7 @@ $resultPatients = $stmt->get_result();
     <div class="container">
         <header>
             <h1>Recherche de Patients</h1>
+            <a href="choix.php" class="btn return-btn">Retour</a>
         </header>
         <form method="GET" action="recherche_patient.php">
             <label for="nom">Nom (tout ou partie) :</label>

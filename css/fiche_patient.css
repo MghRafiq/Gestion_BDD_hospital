@@ -1,0 +1,144 @@
+/* Variables des couleurs */
+:root {
+    --color-bg: #f7f9fc;
+    --color-card-bg: #ffffff;
+    --color-text: #4a5568;
+    --color-border: #cbd5e0;
+    --color-accent: #2d9cdb;
+    --color-accent-hover: #1c7cbf;
+    --color-error: #e53e3e; /* Ajout de la couleur d'erreur */
+}
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Conteneur principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Grille pour les deux colonnes */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+/* Colonne de gauche : Informations du patient */
+.patient-info {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Colonne de droite : Documents */
+.patient-documents {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Carte pour les informations du patient */
+.card {
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: var(--color-text);
+}
+
+.card p strong {
+    color: var(--color-accent);
+}
+
+/* Tableau des documents */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid var(--color-border);
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: var(--color-bg);
+}
+
+/* Formulaire d'upload */
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="file"], form select, form textarea, form input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: var(--color-accent-hover);
+}
+
+/* Bouton de retour */
+.return-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: var(--color-error); /* Rouge */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.return-btn:hover {
+    background-color: #c53030; /* Rouge plus sombre au survol */
+    transform: translateY(-2px); /* Légère élévation */
+}

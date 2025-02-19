@@ -138,3 +138,17 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*Structure de la table `documents`*/
+
+CREATE TABLE documents (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    nom_fichier VARCHAR(255) NOT NULL,
+    chemin VARCHAR(255) NOT NULL,
+    type ENUM('ordonnance', 'prescription', 'identité') NOT NULL,
+    nature_fichier ENUM('PDF', 'Image', 'Autre') NOT NULL,
+    contenu TEXT,
+    date_document DATE,
+    date_upload DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES Patients(code) ON DELETE CASCADE
+);
