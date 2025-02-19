@@ -47,10 +47,10 @@ try {
         $message = $_POST['Message'];
         // Paramètres du serveur SMTP
         $mail->isSMTP();
-        $mail->Host = 'smtp.mail.yahoo.com'; // Remplace par ton serveur SMTP
+        $mail->Host = 'smtp.mail.yahoo.com'; // serveur SMTP yahoo
         $mail->SMTPAuth = true;
-        $mail->Username = 'latifbarama@yahoo.fr'; // Ton adresse e-mail
-        $mail->Password = 'guvjpbzmuqbcdrtt'; // Mot de passe ou App Password
+        $mail->Username = 'later@yahoo.com'; // l'adresse mail je vais le ajouter apres 
+        $mail->Password = 'later'; // meme pour le Mot de passe ou App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Yahoo utilise SSL
         $mail->Port = 465; // Port sécurisé pour Yahoo
 
@@ -67,17 +67,8 @@ try {
 
         // Contenu du mail
         $mail->isHTML(true);
-        $mail->Subject = "Document médical pour $patientNom $patientPrenom";
-        $mail->Body = "
-        <h3>Bonjour,</h3>
-        <p>Veuillez trouver ci-joint le document médical du patient :</p>
-        <ul>
-            <li><strong>Nom :</strong> $patientNom</li>
-            <li><strong>Prenom :</strong> $patientPrenom</li>
-            <li><strong>Numero de Securite Sociale :</strong> $patientSecSoc</li>
-        </ul>
-        <p>Cordialement,<br>Votre hôpital</p>
-    ";
+        $mail->Subject = $subject;
+        $mail->Body = $message;
 
         // Envoi du mail
         if ($mail->send()) {
