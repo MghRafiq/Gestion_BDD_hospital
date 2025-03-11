@@ -49,13 +49,13 @@ try {
         $mail->isSMTP();
         $mail->Host = 'smtp.mail.yahoo.com'; // serveur SMTP yahoo
         $mail->SMTPAuth = true;
-        $mail->Username = 'later@yahoo.com'; // l'adresse mail je vais le ajouter apres 
-        $mail->Password = 'later'; // meme pour le Mot de passe ou App Password
+        $mail->Username = 'rbhopital@yahoo.com'; // l'adresse mail je vais le ajouter apres 
+        $mail->Password = 'xaqtwqazmkaojmvi'; // meme pour le Mot de passe ou App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Yahoo utilise SSL
         $mail->Port = 465; // Port sécurisé pour Yahoo
 
         // Expéditeur et destinataire
-        $mail->setFrom('latifbarama@yahoo.fr', 'M&B Hôpital');
+        $mail->setFrom('rbhopital@yahoo.com', 'M&B Hopital');
         $mail->addAddress($to); // Adresse du destinataire
 
         // Vérifier si le fichier existe avant de l'attacher
