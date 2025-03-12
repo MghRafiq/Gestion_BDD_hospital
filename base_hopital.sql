@@ -148,7 +148,6 @@ CREATE TABLE documents (
     type ENUM('ordonnance', 'prescription', 'identité') NOT NULL,
     nature_fichier ENUM('PDF', 'Image', 'Autre') NOT NULL,
     contenu TEXT,
-    date_document DATE,
     date_upload DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (patient_id) REFERENCES Patients(code) ON DELETE CASCADE
 );

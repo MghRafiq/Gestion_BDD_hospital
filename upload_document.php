@@ -25,8 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $type = $_POST['type'];
     $natureFichier = $_POST['nature_fichier'];
     $contenu = $_POST['contenu'];
-    $dateDocument = $_POST['date_document'];
-
     // Vérifier si un document similaire existe déjà
     $stmtCheck = $conn->prepare("
         SELECT * FROM documents 
@@ -34,9 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         AND type = ? 
         AND nature_fichier = ? 
         AND contenu = ? 
-        AND date_document = ?
     ");
-    $stmtCheck->bind_param("issss", $patientId, $type, $natureFichier, $contenu, $dateDocument);
+    $stmtCheck->bind_param("isss", $patientId, $type, $natureFichier, $contenu);
     $stmtCheck->execute();
     $resultCheck = $stmtCheck->get_result();
 
@@ -46,10 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Enregistrer le fichier
         if (move_uploaded_file($_FILES['document']['tmp_name'], $chemin)) {
             $stmt = $conn->prepare("
-                INSERT INTO documents (patient_id, nom_fichier, chemin, type, nature_fichier, contenu, date_document) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO documents (patient_id, nom_fichier, chemin, type, nature_fichier, contenu, date_upload) 
+                VALUES (?, ?, ?, ?, ?, ?, NOW())
             ");
-            $stmt->bind_param("issssss", $patientId, $nomFichier, $chemin, $type, $natureFichier, $contenu, $dateDocument);
+            $stmt->bind_param("isssss", $patientId, $nomFichier, $chemin, $type, $natureFichier, $contenu);
             $stmt->execute();
             header("Location: fiche_patient.php?id=$patientId");
             exit;
@@ -97,8 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="contenu">Contenu (description) :</label>
             <textarea name="contenu" id="contenu" rows="4" required></textarea><br><br>
 
-            <label for="date_document">Date du document :</label>
-            <input type="date" name="date_document" id="date_document" required><br><br>
 
             <button type="submit">Uploader</button>
         </form>

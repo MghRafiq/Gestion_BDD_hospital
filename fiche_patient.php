@@ -119,7 +119,7 @@ $documents = $resultDocuments->fetch_all(MYSQLI_ASSOC);
                                     <th>Type</th>
                                     <th>Nature du fichier</th>
                                     <th>Contenu</th>
-                                    <th>Date du document</th>
+                                    <th>Date d'upload</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -130,7 +130,7 @@ $documents = $resultDocuments->fetch_all(MYSQLI_ASSOC);
                                         <td><?= htmlspecialchars($doc['type']) ?></td>
                                         <td><?= htmlspecialchars($doc['nature_fichier']) ?></td>
                                         <td><?= htmlspecialchars($doc['contenu']) ?></td>
-                                        <td><?= htmlspecialchars($doc['date_document']) ?></td>
+                                        <td><?= date('d/m/Y', strtotime($doc['date_upload'])) ?></td>
                                         <td>
                                             <a href="<?= htmlspecialchars($doc['chemin']) ?>" target="_blank">Ouvrir</a>
                                             <a href="download.php?file_id=<?= $doc['id'] ?>" download>Télécharger</a>
@@ -173,8 +173,7 @@ $documents = $resultDocuments->fetch_all(MYSQLI_ASSOC);
                         <label for="contenu">Contenu (description) :</label>
                         <textarea name="contenu" id="contenu" rows="4" required></textarea><br><br>
 
-                        <label for="date_document">Date du document :</label>
-                        <input type="date" name="date_document" id="date_document" required><br><br>
+
 
                         <button type="submit">Uploader</button>
                     </form>

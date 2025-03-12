@@ -15,7 +15,6 @@ $conn = connectDatabase();
 $type = isset($_GET['type']) ? $_GET['type'] : '';
 $nature = isset($_GET['nature']) ? $_GET['nature'] : '';
 $contenu = isset($_GET['contenu']) ? $_GET['contenu'] : '';
-$date = isset($_GET['date']) ? $_GET['date'] : '';
 
 // Construction de la requête SQL
 $sql = "SELECT * FROM documents WHERE 1=1";
@@ -40,12 +39,6 @@ if (!empty($contenu)) {
     $paramTypes .= 's';
 }
 
-if (!empty($date)) {
-    $sql .= " AND date_document = ?";
-    $params[] = $date;
-    $paramTypes .= 's';
-}
-
 // Exécuter la requête
 $stmt = $conn->prepare($sql);
 if (!empty($params)) {
@@ -64,6 +57,7 @@ $documents = $result->fetch_all(MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recherche de Documents</title>
     <link rel="stylesheet" href="./css/recherche_documents.css">
+    <script src=".\js\fiche_patient.js"></script>
 </head>
 
 <body>
@@ -95,8 +89,6 @@ $documents = $result->fetch_all(MYSQLI_ASSOC);
             <label for="contenu">Contenu (description) :</label>
             <input type="text" name="contenu" id="contenu" value="<?= htmlspecialchars($contenu) ?>"><br><br>
 
-            <label for="date">Date du document :</label>
-            <input type="date" name="date" id="date" value="<?= htmlspecialchars($date) ?>"><br><br>
 
             <button type="submit">Rechercher</button>
             <button type="button" onclick="window.location.href='recherche_documents.php'">Réinitialiser</button>
@@ -112,7 +104,7 @@ $documents = $result->fetch_all(MYSQLI_ASSOC);
                         <th>Type</th>
                         <th>Nature du fichier</th>
                         <th>Contenu</th>
-                        <th>Date du document</th>
+                        <th>Date d'upload</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -123,10 +115,11 @@ $documents = $result->fetch_all(MYSQLI_ASSOC);
                             <td><?= htmlspecialchars($doc['type']) ?></td>
                             <td><?= htmlspecialchars($doc['nature_fichier']) ?></td>
                             <td><?= htmlspecialchars($doc['contenu']) ?></td>
-                            <td><?= htmlspecialchars($doc['date_document']) ?></td>
+                            <td><?= date('d/m/Y', strtotime($doc['date_upload'])) ?></td>
                             <td>
                                 <a href="<?= htmlspecialchars($doc['chemin']) ?>" target="_blank">Ouvrir</a>
                                 <a href="download.php?file_id=<?= $doc['id'] ?>" download>Télécharger</a>
+                                <a href="#" onclick="printDocument('<?= htmlspecialchars($doc['chemin']) ?>')">Imprimer</a>
                                 <a href="mail_document.php?file_id=<?= $doc['id'] ?>" target="_blank">Envoyer par
                                     mail</a>
                             </td>
@@ -137,6 +130,7 @@ $documents = $result->fetch_all(MYSQLI_ASSOC);
         <?php else: ?>
             <p>Aucun document trouvé pour ces critères.</p>
         <?php endif; ?>
+
     </div>
 </body>
 
