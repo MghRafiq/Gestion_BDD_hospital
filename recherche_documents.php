@@ -127,7 +127,8 @@ $documents = $result->fetch_all(MYSQLI_ASSOC);
                             <td>
                                 <a href="<?= htmlspecialchars($doc['chemin']) ?>" target="_blank">Ouvrir</a>
                                 <a href="download.php?file_id=<?= $doc['id'] ?>" download>Télécharger</a>
-                                <a href="mail_document.php?file_id=<?= $doc['id'] ?>">Envoyer par mail</a>
+                                <a href="mail_document.php?file_id=<?= $doc['id'] ?>" target="_blank">Envoyer par
+                                    mail</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
